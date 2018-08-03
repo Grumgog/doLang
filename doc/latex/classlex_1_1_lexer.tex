@@ -1,0 +1,52 @@
+\hypertarget{classlex_1_1_lexer}{}\section{Класс lex\+:\+:Lexer}
+\label{classlex_1_1_lexer}\index{lex\+::\+Lexer@{lex\+::\+Lexer}}
+
+
+Класс лексического анализатора  
+
+
+
+
+{\ttfamily \#include $<$lexer.\+h$>$}
+
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classlex_1_1_lexer_a4c3c63439f64bf232e8995aaa555a7e4}\label{classlex_1_1_lexer_a4c3c63439f64bf232e8995aaa555a7e4}} 
+{\bfseries Lexer} (\hyperlink{classlex_1_1_divider}{Divider} $\ast$div\+Obj, std\+::vector$<$ \hyperlink{classlex_1_1_tokenizer}{Tokenizer} $\ast$$>$ t=std\+::vector$<$ \hyperlink{classlex_1_1_tokenizer}{Tokenizer} $\ast$$>$())
+\item 
+\mbox{\Hypertarget{classlex_1_1_lexer_a64c1af615d7d401c0e6fcbf0c0c8e02b}\label{classlex_1_1_lexer_a64c1af615d7d401c0e6fcbf0c0c8e02b}} 
+{\bfseries Lexer} (\hyperlink{classlex_1_1_divider}{Divider} $\ast$div\+Obj, \hyperlink{classlex_1_1_tokenizer}{Tokenizer} $\ast$one)
+\item 
+\mbox{\Hypertarget{classlex_1_1_lexer_a950c6154df77c2be981ae428d901eb48}\label{classlex_1_1_lexer_a950c6154df77c2be981ae428d901eb48}} 
+void {\bfseries add\+Tokenizer} (\hyperlink{classlex_1_1_tokenizer}{Tokenizer} $\ast$t)
+\item 
+\mbox{\Hypertarget{classlex_1_1_lexer_aeb57d492b39419657a5f167317e7bc34}\label{classlex_1_1_lexer_aeb57d492b39419657a5f167317e7bc34}} 
+void {\bfseries set\+Divider} (\hyperlink{classlex_1_1_divider}{Divider} $\ast$)
+\item 
+\mbox{\Hypertarget{classlex_1_1_lexer_a95cfd8a79f29edc132fb9cd66f3a0fe9}\label{classlex_1_1_lexer_a95cfd8a79f29edc132fb9cd66f3a0fe9}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries divide\+Lex} (std\+::string str, \hyperlink{classlex_1_1_divider}{Divider} $\ast$div\+Obj)
+\item 
+\mbox{\Hypertarget{classlex_1_1_lexer_a4ba2959182553e6ef14ec9f4ec717289}\label{classlex_1_1_lexer_a4ba2959182553e6ef14ec9f4ec717289}} 
+std\+::vector$<$ \hyperlink{classlex_1_1_token}{Token} $>$ {\bfseries tokenize} (std\+::vector$<$ std\+::string $>$ lexs)
+\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Класс лексического анализатора 
+
+\begin{DoxyAuthor}{Автор}
+grumgog 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Дата}
+27.\+06.\+2018 
+\end{DoxyDate}
+\begin{DoxyVersion}{Версия}
+0.\+2
+\end{DoxyVersion}
+Лексический анализатор -\/ модуль занимающийся разбором строки на лексемы -\/ самостоятельные \char`\"{}слова\char`\"{} языка. Для определения токенов, нужно добавить токенизаторы -\/ унаследованные от \hyperlink{classlex_1_1_tokenizer}{Tokenizer}. Для правильного определения типа токена, рекомендуеться добавлять токенизаторы от более конкретного к более общему случаю. Например целые\+\_\+числа $<$-\/ вещественные\+\_\+числа 
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/днс/\+Desktop/\+Work\+On/do\+Lang/src/lexer.\+h\item 
+C\+:/\+Users/днс/\+Desktop/\+Work\+On/do\+Lang/src/lexer.\+cpp\end{DoxyCompactItemize}
