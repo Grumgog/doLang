@@ -12,6 +12,7 @@ class Tree{
   Token node;
   Tree* leftLeaf;
   Tree* rightLeaf;
+  void init();
 public:
   Tree();
   Tree(Token* begin);
