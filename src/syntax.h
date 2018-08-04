@@ -9,21 +9,23 @@ namespace syntax{
 class Syntax;
 
 class Tree{
-  Token node;
+  lex::Token node;
   Tree* leftLeaf;
   Tree* rightLeaf;
   void init();
+  void del(Tree *t);
 public:
   Tree();
-  Tree(Token* begin);
+  Tree(lex::Token begin);
   Tree* left();
   Tree* right();
-  Token getNode();
-  void setNode(Token n);
+  lex::Token getNode();
+  void setNode(lex::Token n);
   Tree* addLeft(Tree* left);
-  Tree* addLeft(Token node);
+  Tree* addLeft(lex::Token node);
   Tree* addRight(Tree* right);
-  Tree* addRight(Tree* left);
+  Tree* addRight(lex::Token node);
+  ~Tree();
 };
  
 class Rule{

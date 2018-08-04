@@ -26,7 +26,8 @@ namespace lex{
     WORD,
     IF,
     ELSE,
-    WHILE
+    WHILE,
+    SPACE
   };
   
   /**

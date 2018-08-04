@@ -1,17 +1,17 @@
 #include "syntax.h"
 
 namespace syntax{
-  Tree::init(){
+  void Tree::init(){
     this->leftLeaf = nullptr;
     this->rightLeaf = nullptr;
   }
     
   Tree::Tree(){
-    this->node = Token();
+    this->node = lex::Token();
     init();
   }
 
-  Tree::Tree(Token* begin){
+  Tree::Tree(lex::Token begin){
     this->node = begin;
     init();
   }
@@ -24,11 +24,11 @@ namespace syntax{
     return this->rightLeaf;
   }
 
-  Token Tree::getNode(){
+  lex::Token Tree::getNode(){
     return this->node;
   }
 
-  void Tree::setNode(Token n){
+  void Tree::setNode(lex::Token n){
     this->node = n;
   }
 
@@ -39,11 +39,12 @@ namespace syntax{
     return this;
   }
 
-  Tree* Tree::addLeft(Token* node){
+  Tree* Tree::addLeft(lex::Token node){
     if(this->leftLeaf == nullptr)
       this->leftLeaf = new Tree(node);
     else
       this->leftLeaf->node = node;
+    return this;
   }
 
   Tree* Tree::addRight(Tree* right){
@@ -53,10 +54,25 @@ namespace syntax{
     return this->rightLeaf;
   }
 
-  Tree* Tree::addRight(Token* node){
+  Tree* Tree::addRight(lex::Token node){
     if(this->rightLeaf == nullptr)
       this->rightLeaf = new Tree(node);
     else
       this->rightLeaf->node = node;
+    return this;
+  }
+
+  void Tree::del(Tree* t){
+    // recursivly go down on tree
+    if(t->leftLeaf != nullptr)
+      del(t->leftLeaf);
+    if(t->rightLeaf != nullptr)
+      del(t->rightLeaf);
+    delete this;
+  }
+    
+
+  Tree::~Tree(){
+    del(this);
   }
 }
