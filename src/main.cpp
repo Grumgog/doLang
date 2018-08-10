@@ -15,10 +15,10 @@ class simpleDivider : public lex::Divider{
 class WordTokenizer : public lex::Tokenizer{
 public:
   WordTokenizer(){}
-  virtual lex::TokenType isToken(std::string str){
+  virtual std::string isToken(std::string str){
     if(std::string(" ").compare(str)==0)
-      return lex::TokenType::SPACE;
-    else return lex::TokenType::WORD;
+      return "SPACE";
+    else return "WORLD";
   } 
 };
 
@@ -38,8 +38,7 @@ int main()
   forest->addLeft(new syntax::Tree(res[1]));
   forest->addRight(new syntax::Tree(res[2]));
 
-  cout << forest->getNode().getValue() << " " << forest->left()->getNode().getValue() << " "
-       << forest->right()->getNode().getValue() << endl;
+  cout << forest->toString() << endl;
   
   return 0;
 }

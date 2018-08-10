@@ -70,6 +70,23 @@ namespace syntax{
       del(t->rightLeaf);
     delete this;
   }
+
+  std::string Tree::toString(){
+    return inDeep(0, this);
+  }
+
+  std::string Tree::inDeep(int level, Tree* n){
+    std::stringstream ss;
+    if(n != nullptr){
+      ss << inDeep(level+1, n->left());
+      for(int i = 0; i<level; i++)
+	ss << " ";
+      ss << "|-" << n->node.toString() << std::endl;
+      ss << inDeep(level+1, n->right());
+    }
+    return ss.str();
+	
+  }
     
 
   Tree::~Tree(){

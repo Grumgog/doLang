@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <string>
+#include <sstream>
+#include <iostream>
 #include "lexer.h"
 namespace syntax{
 
@@ -14,6 +16,7 @@ class Tree{
   Tree* rightLeaf;
   void init();
   void del(Tree *t);
+  std::string inDeep(int level, Tree* n);
 public:
   Tree();
   Tree(lex::Token begin);
@@ -25,6 +28,7 @@ public:
   Tree* addLeft(lex::Token node);
   Tree* addRight(Tree* right);
   Tree* addRight(lex::Token node);
+  std::string toString();
   ~Tree();
 };
  

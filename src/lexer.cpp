@@ -53,17 +53,17 @@ namespace lex{
   
   std::vector<Token> Lexer::tokenize(std::vector<std::string> lexs){
     std::vector<Token> result;
-    TokenType type = TokenType::NONE;
+    std::string type = EmptyToken;
     for(std::string lex : lexs){
       bool errors = true;
       for(Tokenizer* t : this->tokenizers){
         type = t->isToken(lex);
-        if(type != TokenType::NONE){
+        if(type.compare(EmptyToken) != 0){
           result.push_back(Token(type,lex));
 	  errors = false;
           break;
         }
-        if(errors) result.push_back(Token(TokenType::NONE, "ERROR"));
+        if(errors) result.push_back(Token(EmptyToken, "ERROR"));
       }
     }
     return result;
@@ -75,12 +75,12 @@ namespace lex{
   }
   //class Token
   // init funtion
-  void Token::init(TokenType t, std::string v){
+  void Token::init(std::string t, std::string v){
     this->type = t;
     this->value = v;
   }
 
-  Token::Token(TokenType t, std::string v){
+  Token::Token(std::string t, std::string v){
     init(t, v);
   }
 
@@ -94,7 +94,7 @@ namespace lex{
     return *this;
   }
 
-  TokenType Token::getType()const{
+  std::string Token::getType()const{
     return this->type;
   }
 
@@ -102,12 +102,18 @@ namespace lex{
     return this->value;
   }
 
-  void Token::setType(TokenType t){
+  void Token::setType(std::string t){
     this->type = t;
   }
 
   void Token::setValue(std::string v){
     this->value = v;
+  }
+
+  std::string Token::toString(){
+    std::stringstream ss;
+    ss << "(" << this->type << ", " << this->value << ")";
+    return ss.str();
   }
   
   Token::~Token(){}
