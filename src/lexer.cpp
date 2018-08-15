@@ -12,7 +12,7 @@ namespace lex{
   }
 
   void Lexer::addTokenizer(Tokenizer* t){
-    this->tokenizers.push_back(t);
+    if(t != nullptr) this->tokenizers.push_back(t);
   }
 
   void Lexer::setDivider(Divider* d){
@@ -42,12 +42,12 @@ namespace lex{
     {
       if(this->divider->isDivide(str.at(i))){
         subLex = str.substr(begin, i-begin);
-        begin = i + 1; // and missing letter  - we add it next
-        result.push_back(subLex);
-        result.push_back(std::string(1, str.at(i)));
+        begin = i;
+	if(!subLex.empty()) result.push_back(subLex);
       }
     }
-    result.push_back(str.substr(begin, str.length()));
+    std::string buf = str.substr(begin, str.length());
+    if(!buf.empty()) result.push_back(buf);
     return result;
   }
   
@@ -74,6 +74,15 @@ namespace lex{
     return this->tokenize(lexs);
   }
   //class Token
+  std::vector<Token> Token::delToken(std::string t, std::vector<Token> vt){
+    for(std::vector<Token>::iterator i = vt.begin(); i!=vt.end(); i++){
+      if(i->getType().compare(t) == 0)
+	vt.erase(i);
+    }
+    return vt;
+      
+  }
+  
   // init funtion
   void Token::init(std::string t, std::string v){
     this->type = t;

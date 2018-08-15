@@ -37,6 +37,8 @@ namespace lex{
     std::string value;
     void init(std::string t, std::string v);
   public:
+    static std::vector<Token> delToken(std::string tokeType, std::vector<Token> vt);
+    
     // constructors
     Token(std::string t = EmptyToken, std::string v ="");
     Token(const Token& t);

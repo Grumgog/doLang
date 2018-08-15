@@ -3,22 +3,38 @@
 #include "lexer.h"
 #include "syntax.h"
 
+bool isDigit(char c){
+  return (c >= 48) && (c <= 57);
+}
+
+bool isOperator(char c){
+  return (c == '+') || (c == '-') || (c == '*') || (c == '/');
+}
+
 class simpleDivider : public lex::Divider{
-  public:
-    simpleDivider(){}
-    virtual bool isDivide(char letter){
-      return letter == ' ';
-    }
-    
+  
+  char prevChar; 
+public:
+  simpleDivider(){}
+  virtual bool isDivide(char letter){
+    bool res = (isDigit(prevChar) && isOperator(letter)) ||
+      (isOperator(prevChar) && isDigit(letter)) || (letter == ' ')
+      || (prevChar == ' ');
+    prevChar = letter;
+    return res;
+  }  
 };
 
 class WordTokenizer : public lex::Tokenizer{
 public:
   WordTokenizer(){}
   virtual std::string isToken(std::string str){
-    if(std::string(" ").compare(str)==0)
+    if(std::string(" ").compare(str) == 0)
       return "SPACE";
-    else return "WORLD";
+    else if(isDigit(str[0]))
+      return "NUMBER";
+    else if(isOperator(str[0]))
+      return "OP";
   } 
 };
 
@@ -28,7 +44,8 @@ int main()
 {
 
   lex::Lexer analizator(new simpleDivider(), new WordTokenizer());
-  vector<lex::Token> res = analizator.process("Hello world and over this!");
+  vector<lex::Token> res = analizator.process("33+52 - 43 * 25 / 5");
+  res = lex::Token::delToken("SPACE", res);
   for(lex::Token i : res){
     cout << i.getType() << " === " << "\"" << i.getValue() << "\"" << endl;
   }
