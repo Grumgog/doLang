@@ -1,6 +1,7 @@
 #include "lexer.h"
 
 namespace lex{
+  // class Lexer
   Lexer::Lexer(Divider* divObj, std::vector<Tokenizer*> t){
     this->divider = divObj;
     this->tokenizers = t;

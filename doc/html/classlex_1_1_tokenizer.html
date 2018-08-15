@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: Класс lex::Tokenizer</title>
+<title>doLang: Класс lex::Tokenizer</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -14,8 +14,9 @@
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
   $(document).ready(initResizable);
-</script>
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -28,7 +29,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">doLang
    </div>
   </td>
  </tr>
@@ -36,18 +37,21 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Создано системой Doxygen 1.8.13 -->
+<!-- Создано системой Doxygen 1.8.14 -->
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 $(function() {
   initMenu('',true,false,'search.php','Поиск');
   $(document).ready(function() { init_search(); });
 });
-</script>
+/* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
@@ -61,7 +65,9 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
 $(document).ready(function(){initNavTree('classlex_1_1_tokenizer.html','');});
+/* @license-end */
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -87,25 +93,34 @@ $(document).ready(function(){initNavTree('classlex_1_1_tokenizer.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Виртуальный класс для токенизаторов  
+<p>Класс Токенизатора  
  <a href="classlex_1_1_tokenizer.html#details">Подробнее...</a></p>
 
 <p><code>#include &lt;<a class="el" href="lexer_8h_source.html">lexer.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф наследования:lex::Tokenizer:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classlex_1_1_tokenizer.png" usemap="#lex::Tokenizer_map" alt=""/>
+  <map id="lex::Tokenizer_map" name="lex::Tokenizer_map">
+<area href="class_word_tokenizer.html" alt="WordTokenizer" shape="rect" coords="0,56,97,80"/>
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Открытые члены</h2></td></tr>
-<tr class="memitem:a6fd22f79c30b936923c2e408eaaf835c"><td class="memItemLeft" align="right" valign="top"><a id="a6fd22f79c30b936923c2e408eaaf835c"></a>
-virtual <a class="el" href="classlex_1_1_token.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><b>analysis</b> (std::string lex)=0</td></tr>
-<tr class="separator:a6fd22f79c30b936923c2e408eaaf835c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae074fb2d8d0a4cfc11661c67faad1602"><td class="memItemLeft" align="right" valign="top"><a id="ae074fb2d8d0a4cfc11661c67faad1602"></a>
+virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>isToken</b> (const std::string str)=0</td></tr>
+<tr class="separator:ae074fb2d8d0a4cfc11661c67faad1602"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
-<div class="textblock"><p>Виртуальный класс для токенизаторов </p>
-<dl class="section author"><dt>Автор</dt><dd>grumgog </dd></dl>
+<div class="textblock"><p>Класс Токенизатора </p>
+<dl class="section author"><dt>Автор</dt><dd>Grumgog </dd></dl>
 <dl class="section date"><dt>Дата</dt><dd>27.06.2018 </dd></dl>
-<dl class="section version"><dt>Версия</dt><dd>0.2</dd></dl>
-<p>Токенизатор - класс для определения типа лексемы. один тип - один токенизатор </p>
+<dl class="section version"><dt>Версия</dt><dd>0.1</dd></dl>
+<p>Токенизатор - объект для предназначенный для преобразования лексем в токены. </p>
 </div><hr/>Объявления и описания членов класса находятся в файле:<ul>
-<li>C:/Users/днс/Desktop/WorkOn/doLang/src/<a class="el" href="lexer_8h_source.html">lexer.h</a></li>
+<li>C:/Users/grumgog/Desktop/WorkOn/doLang/src/<a class="el" href="lexer_8h_source.html">lexer.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -115,7 +130,7 @@ virtual <a class="el" href="classlex_1_1_token.html">Token</a>&#160;</td><td cla
     <li class="navelem"><b>lex</b></li><li class="navelem"><a class="el" href="classlex_1_1_tokenizer.html">Tokenizer</a></li>
     <li class="footer">Создано системой
     <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
   </ul>
 </div>
 </body>

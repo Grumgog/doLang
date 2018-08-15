@@ -9,7 +9,13 @@
 namespace syntax{
 
 class Syntax;
+/**
+\brief Класс для представления бинарного дерева
+\author Grumgog
+\version 0.2
 
+Класс предоставляет бинарное дерево с токеном в узле
+ */
 class Tree{
   lex::Token node;
   Tree* leftLeaf;

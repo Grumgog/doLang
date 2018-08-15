@@ -1,4 +1,5 @@
 var classlex_1_1_tokenizer =
 [
-    [ "analysis", "classlex_1_1_tokenizer.html#a6fd22f79c30b936923c2e408eaaf835c", null ]
+    [ "~Tokenizer", "classlex_1_1_tokenizer.html#afbec357530bb147c920c42793a446705", null ],
+    [ "isToken", "classlex_1_1_tokenizer.html#ae074fb2d8d0a4cfc11661c67faad1602", null ]
 ];

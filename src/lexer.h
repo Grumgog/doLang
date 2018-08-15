@@ -53,7 +53,15 @@ namespace lex{
     // destructor
     virtual ~Token();
   };
-  
+  /**
+     \brief Класс Токенизатора
+     \author Grumgog
+     \date 27.06.2018
+     \version 0.1
+
+     Токенизатор - объект для предназначенный для преобразования лексем
+     в токены.
+   */
   class Tokenizer{
   public:
     virtual ~Tokenizer(){};

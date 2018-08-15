@@ -6,5 +6,12 @@ var annotated_dup =
       [ "Token", "classlex_1_1_token.html", "classlex_1_1_token" ],
       [ "Tokenizer", "classlex_1_1_tokenizer.html", "classlex_1_1_tokenizer" ]
     ] ],
-    [ "simpleDivider", "classsimple_divider.html", "classsimple_divider" ]
+    [ "syntax", null, [
+      [ "Rule", "classsyntax_1_1_rule.html", null ],
+      [ "Syntax", "classsyntax_1_1_syntax.html", null ],
+      [ "Tree", "classsyntax_1_1_tree.html", "classsyntax_1_1_tree" ]
+    ] ],
+    [ "Error", "class_error.html", "class_error" ],
+    [ "simpleDivider", "classsimple_divider.html", "classsimple_divider" ],
+    [ "WordTokenizer", "class_word_tokenizer.html", "class_word_tokenizer" ]
 ];
