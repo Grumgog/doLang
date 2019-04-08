@@ -25,6 +25,22 @@ public:
   }  
 };
 
+class iniDivider : public lex::Divider{
+  char prevChar;
+public:
+  iniDivider(){}
+  virtual bool isDivide(char letter){
+    switch(letter){
+    case '+':
+    case '-':
+      return true;
+    default:
+      if(prevChar == '=')
+	return true;
+      else return false;
+    }
+  }
+};
 class WordTokenizer : public lex::Tokenizer{
 public:
   WordTokenizer(){}
@@ -44,18 +60,11 @@ int main()
 {
 
   lex::Lexer analizator(new simpleDivider(), new WordTokenizer());
-  vector<lex::Token> res = analizator.process("33+52 - 43 * 25 / 5");
+  vector<lex::Token> res = analizator.process("28  + 4");
   res = lex::Token::delToken("SPACE", res);
   for(lex::Token i : res){
-    cout << i.getType() << " === " << "\"" << i.getValue() << "\"" << endl;
+    cout << i.toString() << endl;
   }
-
-  syntax::Tree* forest = new syntax::Tree();
-  forest->setNode(res[0]);
-  forest->addLeft(new syntax::Tree(res[1]));
-  forest->addRight(new syntax::Tree(res[2]));
-
-  cout << forest->toString() << endl;
   
   return 0;
 }

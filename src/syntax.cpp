@@ -1,81 +1,81 @@
 #include "syntax.h"
 
 namespace syntax{
-  void Tree::init(){
+  void BinaryTree::init(){
     this->leftLeaf = nullptr;
     this->rightLeaf = nullptr;
   }
     
-  Tree::Tree(){
+  BinaryTree::BinaryTree(){
     this->node = lex::Token();
     init();
   }
 
-  Tree::Tree(lex::Token begin){
+  BinaryTree::BinaryTree(lex::Token begin){
     this->node = begin;
     init();
   }
 
-  Tree* Tree::left(){
+  BinaryTree* BinaryTree::left(){
     return this->leftLeaf;
   }
 
-  Tree* Tree::right(){
+  BinaryTree* BinaryTree::right(){
     return this->rightLeaf;
   }
 
-  lex::Token Tree::getNode(){
+  lex::Token BinaryTree::getNode(){
     return this->node;
   }
 
-  void Tree::setNode(lex::Token n){
+  void BinaryTree::setNode(lex::Token n){
     this->node = n;
   }
 
-  Tree* Tree::addLeft(Tree* left){
+  BinaryTree* BinaryTree::addLeft(BinaryTree* left){
     if(this->leftLeaf != nullptr)
       delete this->leftLeaf;
     this->leftLeaf = left;
     return this;
   }
 
-  Tree* Tree::addLeft(lex::Token node){
+  BinaryTree* BinaryTree::addLeft(lex::Token node){
     if(this->leftLeaf == nullptr)
-      this->leftLeaf = new Tree(node);
+      this->leftLeaf = new BinaryTree(node);
     else
       this->leftLeaf->node = node;
     return this;
   }
 
-  Tree* Tree::addRight(Tree* right){
+  BinaryTree* BinaryTree::addRight(BinaryTree* right){
     if(this->rightLeaf != nullptr)
       delete this->rightLeaf;
     this->rightLeaf = right;
     return this->rightLeaf;
   }
 
-  Tree* Tree::addRight(lex::Token node){
+  BinaryTree* BinaryTree::addRight(lex::Token node){
     if(this->rightLeaf == nullptr)
-      this->rightLeaf = new Tree(node);
+      this->rightLeaf = new BinaryTree(node);
     else
       this->rightLeaf->node = node;
     return this;
   }
 
-  void Tree::del(Tree* t){
+  void BinaryTree::del(BinaryTree* t){
     // recursivly go down on tree
     if(t->leftLeaf != nullptr)
       del(t->leftLeaf);
     if(t->rightLeaf != nullptr)
       del(t->rightLeaf);
-    delete this;
+    delete t;
   }
 
-  std::string Tree::toString(){
+  std::string BinaryTree::toString(){
     return inDeep(0, this);
   }
 
-  std::string Tree::inDeep(int level, Tree* n){
+  std::string BinaryTree::inDeep(int level, BinaryTree* n){
     std::stringstream ss;
     if(n != nullptr){
       ss << inDeep(level+1, n->left());
@@ -88,8 +88,47 @@ namespace syntax{
 	
   }
     
+  BinaryTree::~BinaryTree(){
+    del(this);
+  }
+
+  Tree::Tree(){}
+
+  Tree::Tree(lex::Token begin){
+    this->node = begin;
+  }
+
+  Tree* Tree::getLeaf(unsigned int inode){
+    return this->leafs.at(inode);
+  }
+
+  void Tree::addLeaf(Tree* subTree){
+    this->leafs.push_back(subTree);
+  }
+
+  void Tree::addLeaf(lex::Token t){
+    this->leafs.push_back(new Tree(t));
+  }
+
+  unsigned int Tree::count(){
+    return this->leafs.size();
+  }
+
+  lex::Token Tree::getNode(){
+    return this->node;
+  }
+
+  void Tree::setNode(lex::Token n){
+    this->node = n;
+  }
 
   Tree::~Tree(){
     del(this);
+  }
+
+  void Tree::del(Tree* t){
+    for(Tree* st : this->leafs)
+      del(st);
+    delete t;
   }
 }

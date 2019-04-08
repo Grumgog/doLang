@@ -16,38 +16,55 @@ class Syntax;
 
 Класс предоставляет бинарное дерево с токеном в узле
  */
-class Tree{
+class BinaryTree{
   lex::Token node;
-  Tree* leftLeaf;
-  Tree* rightLeaf;
+  BinaryTree* leftLeaf;
+  BinaryTree* rightLeaf;
   void init();
-  void del(Tree *t);
-  std::string inDeep(int level, Tree* n);
+  void del(BinaryTree *t);
+  std::string inDeep(int level, BinaryTree* n);
 public:
-  Tree();
-  Tree(lex::Token begin);
-  Tree* left();
-  Tree* right();
+  BinaryTree();
+  BinaryTree(lex::Token begin);
+  BinaryTree* left();
+  BinaryTree* right();
   lex::Token getNode();
   void setNode(lex::Token n);
-  Tree* addLeft(Tree* left);
-  Tree* addLeft(lex::Token node);
-  Tree* addRight(Tree* right);
-  Tree* addRight(lex::Token node);
+  BinaryTree* addLeft(BinaryTree* left);
+  BinaryTree* addLeft(lex::Token node);
+  BinaryTree* addRight(BinaryTree* right);
+  BinaryTree* addRight(lex::Token node);
   std::string toString();
-  ~Tree();
+  ~BinaryTree();
 };
+
+ class Tree{
+   lex::Token node;
+   std::vector<Tree*> leafs;
+   void init();
+   void del(Tree* t);
+ public:
+   Tree();
+   Tree(lex::Token begin);
+
+   Tree* getLeaf(unsigned int inode);
+   void addLeaf(Tree* subTree);
+   void addLeaf(lex::Token);
+   unsigned int count();
+   lex::Token getNode();
+   void setNode(lex::Token n);
+
+   ~Tree();
+ };
  
 class Rule{
   Syntax* parent;
- public:
-  
+ public: 
 };
   
 class Syntax{
   std::vector<std::string> TokenStream;
   std::vector<Rule> rules;
-  
 };
 }
 #endif
